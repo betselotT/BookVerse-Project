@@ -158,7 +158,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="w-full space-y-5"
+                    className="w-full space-y-5 text-black"
                   >
                     {!isSignIn && (
                       <CustomFormField
