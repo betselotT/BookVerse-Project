@@ -57,6 +57,7 @@ import {
   deleteBook as deleteBookFromDB,
 } from "@/lib/firebase/books";
 import SignOutButton from "@/components/sign-out-button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function MyBooks() {
   const router = useRouter();
@@ -267,22 +268,22 @@ export default function MyBooks() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="h-12 w-12 text-orange-500 animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading your books...</p>
+          <p className="text-gray-600 dark:text-gray-400">Loading your books...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50 dark:opacity-20 pointer-events-none"></div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md shadow-sm animate-in slide-in-from-top duration-300 pr-10">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm animate-in slide-in-from-top duration-300 pr-10">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="flex items-center group pl-10">
@@ -302,14 +303,14 @@ export default function MyBooks() {
           <nav className="hidden md:flex items-center gap-8">
             <button
               onClick={() => router.push("/books")}
-              className="text-sm font-medium text-orange-600 relative group"
+              className="text-sm font-medium text-orange-600 dark:text-orange-400 relative group"
             >
               My Books
               <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500 transition-all duration-300"></span>
             </button>
             <button
               onClick={() => router.push("/")}
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group"
             >
               Discover
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
@@ -319,16 +320,17 @@ export default function MyBooks() {
           {/* User menu */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-8">
+              <ThemeToggle />
               <button
                 onClick={() => {
                   router.push("/profile");
                   console.log("Profile clicked");
                 }}
-                className="flex items-center gap-2 text-sm text-gray-700 hover:text-black transition cursor-pointer"
+                className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition cursor-pointer"
               >
-                <User className="h-9 w-9 text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group" />
+                <User className="h-9 w-9 text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group" />
               </button>
-              <div className="text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105">
+              <div className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105">
                 <SignOutButton />
               </div>
             </div>
@@ -340,8 +342,8 @@ export default function MyBooks() {
         {/* Page title and actions */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">My Books</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Books</h1>
+            <p className="text-gray-600 dark:text-gray-400">
               Track and manage your reading journey
             </p>
           </div>
@@ -466,47 +468,47 @@ export default function MyBooks() {
 
         {/* Reading stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl shadow-md p-4 border border-orange-100 flex items-center">
-            <div className="p-3 bg-orange-100 rounded-lg mr-4">
-              <BookMarked className="h-6 w-6 text-orange-600" />
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-4 border border-orange-100 dark:border-gray-800 flex items-center">
+            <div className="p-3 bg-orange-100 dark:bg-orange-950 rounded-lg mr-4">
+              <BookMarked className="h-6 w-6 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Total Books</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Total Books</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-4 border border-orange-100 flex items-center">
-            <div className="p-3 bg-orange-100 rounded-lg mr-4">
-              <Clock className="h-6 w-6 text-orange-600" />
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-4 border border-orange-100 dark:border-gray-800 flex items-center">
+            <div className="p-3 bg-orange-100 dark:bg-orange-950 rounded-lg mr-4">
+              <Clock className="h-6 w-6 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Currently Reading</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-500 dark:text-gray-400">Currently Reading</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {stats.reading}
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-4 border border-orange-100 flex items-center">
-            <div className="p-3 bg-orange-100 rounded-lg mr-4">
-              <CheckCircle className="h-6 w-6 text-orange-600" />
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-4 border border-orange-100 dark:border-gray-800 flex items-center">
+            <div className="p-3 bg-orange-100 dark:bg-orange-950 rounded-lg mr-4">
+              <CheckCircle className="h-6 w-6 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Completed</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-500 dark:text-gray-400">Completed</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {stats.completed}
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-4 border border-orange-100 flex items-center">
-            <div className="p-3 bg-orange-100 rounded-lg mr-4">
-              <Star className="h-6 w-6 text-orange-600" />
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-4 border border-orange-100 dark:border-gray-800 flex items-center">
+            <div className="p-3 bg-orange-100 dark:bg-orange-950 rounded-lg mr-4">
+              <Star className="h-6 w-6 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Average Rating</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-500 dark:text-gray-400">Average Rating</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {stats.averageRating ? stats.averageRating.toFixed(1) : "N/A"}
               </p>
             </div>
@@ -520,7 +522,7 @@ export default function MyBooks() {
             <Input
               type="search"
               placeholder="Search your books..."
-              className="pl-10 border-gray-200 focus:border-orange-400"
+              className="pl-10 border-gray-200 dark:border-gray-700 focus:border-orange-400 dark:focus:border-orange-500 bg-white dark:bg-gray-900 text-black dark:text-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -533,7 +535,7 @@ export default function MyBooks() {
               className={
                 activeTab === "all"
                   ? "bg-orange-500 hover:bg-orange-600"
-                  : "border-orange-200 text-gray-700"
+                  : "border-orange-200 dark:border-orange-800 text-gray-700 dark:text-gray-300"
               }
             >
               All
@@ -544,7 +546,7 @@ export default function MyBooks() {
               className={
                 activeTab === "want-to-read"
                   ? "bg-orange-500 hover:bg-orange-600"
-                  : "border-orange-200 text-gray-700"
+                  : "border-orange-200 dark:border-orange-800 text-gray-700 dark:text-gray-300"
               }
             >
               Want to Read
@@ -555,7 +557,7 @@ export default function MyBooks() {
               className={
                 activeTab === "reading"
                   ? "bg-orange-500 hover:bg-orange-600"
-                  : "border-orange-200 text-gray-700"
+                  : "border-orange-200 dark:border-orange-800 text-gray-700 dark:text-gray-300"
               }
             >
               Reading
@@ -566,7 +568,7 @@ export default function MyBooks() {
               className={
                 activeTab === "completed"
                   ? "bg-orange-500 hover:bg-orange-600"
-                  : "border-orange-200 text-gray-700"
+                  : "border-orange-200 dark:border-orange-800 text-gray-700 dark:text-gray-300"
               }
             >
               Completed
@@ -580,7 +582,7 @@ export default function MyBooks() {
             {filteredBooks.map((book) => (
               <div
                 key={book.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden border border-orange-100 hover:shadow-lg transition-all duration-300"
+                className="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-orange-100 dark:border-gray-800 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex p-4 gap-4">
                   {/* Book cover */}
@@ -596,10 +598,10 @@ export default function MyBooks() {
 
                   {/* Book details */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
                       {book.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-2">{book.author}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{book.author}</p>
 
                     {/* Categories */}
                     {book.categories && book.categories.length > 0 && (
@@ -608,7 +610,7 @@ export default function MyBooks() {
                           <Badge
                             key={idx}
                             variant="outline"
-                            className="text-xs bg-orange-50 text-orange-700 border-orange-200"
+                            className="text-xs bg-orange-50 dark:bg-orange-950 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800"
                           >
                             {category}
                           </Badge>
@@ -618,13 +620,13 @@ export default function MyBooks() {
 
                     {/* Reading progress */}
                     <div className="mb-2">
-                      <div className="flex justify-between text-xs text-gray-600 mb-1">
+                      <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
                         <span>Progress</span>
                         <span>{book.progress}%</span>
                       </div>
                       <Progress
                         value={book.progress}
-                        className="h-1.5 bg-gray-100"
+                        className="h-1.5 bg-gray-100 dark:bg-gray-800"
                       />
                     </div>
 
@@ -632,7 +634,7 @@ export default function MyBooks() {
                     {book.status === "completed" && book.rating && (
                       <div className="flex items-center mb-2">
                         <Star className="h-3 w-3 fill-orange-400 text-orange-400 mr-1" />
-                        <span className="text-xs text-gray-600">
+                        <span className="text-xs text-gray-600 dark:text-gray-400">
                           {book.rating}
                         </span>
                       </div>
@@ -640,7 +642,7 @@ export default function MyBooks() {
 
                     {/* Page count */}
                     {book.pageCount && (
-                      <div className="flex items-center text-xs text-gray-600 mb-2">
+                      <div className="flex items-center text-xs text-gray-600 dark:text-gray-400 mb-2">
                         <BookText className="h-3 w-3 mr-1" />
                         <span>{book.pageCount} pages</span>
                       </div>
@@ -649,7 +651,7 @@ export default function MyBooks() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex border-t border-gray-100">
+                <div className="flex border-t border-gray-100 dark:border-gray-800">
                   <Dialog
                     open={isEditDialogOpen && selectedBook?.id === book.id}
                     onOpenChange={(open) => {
@@ -660,7 +662,7 @@ export default function MyBooks() {
                     <DialogTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="flex-1 py-2 rounded-none text-gray-600 hover:text-orange-600 hover:bg-orange-50"
+                        className="flex-1 py-2 rounded-none text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-950"
                         onClick={() => setSelectedBook(book)}
                       >
                         <Edit className="h-4 w-4 mr-2" />
@@ -727,7 +729,7 @@ export default function MyBooks() {
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="flex-1 py-2 rounded-none text-gray-600 hover:text-orange-600 hover:bg-orange-50"
+                        className="flex-1 py-2 rounded-none text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-950"
                       >
                         <BookMarked className="h-4 w-4 mr-2" />
                         Status
@@ -771,12 +773,12 @@ export default function MyBooks() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 bg-white rounded-xl shadow-sm border border-orange-100">
-            <BookOpen className="h-12 w-12 text-orange-300 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+          <div className="text-center py-12 bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-orange-100 dark:border-gray-800">
+            <BookOpen className="h-12 w-12 text-orange-300 dark:text-orange-700 mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
               No books found
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               {searchTerm
                 ? "No books match your search criteria. Try a different search term."
                 : "You haven't added any books to this category yet."}

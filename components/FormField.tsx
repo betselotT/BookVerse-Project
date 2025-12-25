@@ -24,15 +24,15 @@ const FormField = <T extends FieldValues>({
   type = "text",
 }: FormFieldProps<T>) => {
   return (
-    <Controller
+      <Controller
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="label">{label}</FormLabel>
+          <FormLabel className="text-gray-700 dark:text-gray-300">{label}</FormLabel>
           <FormControl>
             <Input
-              className="input"
+              className="h-12 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 focus:border-orange-400 dark:focus:border-orange-500 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
               type={type}
               placeholder={placeholder}
               {...field}

@@ -27,6 +27,7 @@ import {
 import { useEffect, useState, useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { useAuthNavigation } from "@/lib/auth-utils";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // Define book types
 interface Book {
@@ -236,7 +237,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md shadow-sm animate-in slide-in-from-top duration-300 pl-5 lg:pl-30">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm animate-in slide-in-from-top duration-300 pl-5 lg:pl-30">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center group">
@@ -253,21 +254,21 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="#browse"
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group"
             >
               Browse
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <button
               onClick={handleMyBooksClick}
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group cursor-pointer"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group cursor-pointer"
             >
               My Books
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </button>
             <Link
               href="#about"
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group"
             >
               About
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
@@ -283,7 +284,7 @@ export default function Home() {
                   placeholder="Search by title, author, or ISBN"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 h-8 bg-white border-2 border-gray-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-black"
+                  className="pl-12 h-8 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 focus:border-orange-400 dark:focus:border-orange-500 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-black dark:text-white"
                 />
               </div>
               <Button
@@ -305,6 +306,7 @@ export default function Home() {
 
           {/* Auth Buttons - Desktop */}
           <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             {isLoggedIn ? (
               <Button
                 onClick={handleMyBooksClick}
@@ -319,7 +321,7 @@ export default function Home() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex cursor-pointer items-center gap-2 border-orange-200 text-orange-600 transition-all duration-300 hover:scale-105 hover:text-orange-500 hover:bg-orange-50"
+                    className="flex cursor-pointer items-center gap-2 border-orange-200 dark:border-orange-800 text-orange-600 dark:text-orange-400 transition-all duration-300 hover:scale-105 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950"
                   >
                     <LogIn className="h-4 w-4" />
                     <span>Login</span>
@@ -344,21 +346,25 @@ export default function Home() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hover:bg-orange-50"
+                className="hover:bg-orange-50 dark:hover:bg-orange-950"
               >
-                <Menu className="h-6 w-6 text-orange-600" />
+                <Menu className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[300px] sm:w-[400px] bg-white"
+              className="w-[300px] sm:w-[400px] bg-white dark:bg-gray-950"
             >
               <nav className="flex flex-col gap-4 mt-8">
+                <div className="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-800">
+                  <span className="text-lg font-medium text-gray-700 dark:text-gray-300">Theme</span>
+                  <ThemeToggle />
+                </div>
                 <SheetClose asChild>
                   <Link
                     href="#browse"
-                    className="flex items-center py-3 text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-300 border-b border-gray-100"
+                    className="flex items-center py-3 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-300 border-b border-gray-100 dark:border-gray-800"
                   >
                     Browse
                   </Link>
@@ -366,7 +372,7 @@ export default function Home() {
                 <SheetClose asChild>
                   <button
                     onClick={handleMyBooksClick}
-                    className="flex items-center py-3 text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-300 border-b border-gray-100 text-left cursor-pointer"
+                    className="flex items-center py-3 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-300 border-b border-gray-100 dark:border-gray-800 text-left cursor-pointer"
                   >
                     My Books
                   </button>
@@ -374,7 +380,7 @@ export default function Home() {
                 <SheetClose asChild>
                   <Link
                     href="#about"
-                    className="flex items-center py-3 text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-300 border-b border-gray-100"
+                    className="flex items-center py-3 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-300 border-b border-gray-100 dark:border-gray-800"
                   >
                     About
                   </Link>
@@ -382,7 +388,7 @@ export default function Home() {
                 <div className="flex flex-col gap-3 mt-6">
                   <Button
                     variant="outline"
-                    className="flex items-center gap-2 w-full border-orange-200 text-orange-600 hover:bg-orange-50"
+                    className="flex items-center gap-2 w-full border-orange-200 dark:border-orange-800 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-950"
                   >
                     <LogIn className="h-4 w-4" />
                     <span>Login</span>
@@ -402,20 +408,20 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id="browse"
-          className="relative py-20 bg-gradient-to-br from-orange-50 via-white to-orange-100 overflow-hidden pl-5 lg:pl-30"
+          className="relative py-20 bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden pl-5 lg:pl-30"
         >
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50 dark:opacity-20"></div>
           <div className="container px-4 md:px-6 relative">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="space-y-6 animate-in slide-in-from-left duration-700">
-                <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium animate-in fade-in duration-1000 delay-300">
+                <div className="inline-flex items-center px-4 py-2 bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium animate-in fade-in duration-1000 delay-300">
                   <Star className="h-4 w-4 mr-2" />
                   Discover Amazing Stories
                 </div>
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-gradient-to-r from-gray-900 via-gray-800 to-orange-800 bg-clip-text text-transparent">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-gradient-to-r from-gray-900 via-gray-800 to-orange-800 dark:from-white dark:via-gray-200 dark:to-orange-400 bg-clip-text text-transparent">
                   Discover Your Next Favorite Book
                 </h1>
-                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl leading-relaxed">
                   Explore thousands of books across all genres. Find your
                   perfect read today.
                 </p>
@@ -430,7 +436,7 @@ export default function Home() {
                       placeholder="Search by title, author, or ISBN"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-12 h-12 bg-white border-2 border-gray-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-black"
+                      className="pl-12 h-12 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 focus:border-orange-400 dark:focus:border-orange-500 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-black dark:text-white"
                     />
                   </div>
                   <Button
@@ -492,16 +498,16 @@ export default function Home() {
         </section>
 
         {/* Featured Books / Search Results */}
-        <section className="py-20 bg-white pl-5 lg:pl-30">
+        <section className="py-20 bg-white dark:bg-gray-950 pl-5 lg:pl-30">
           <div className="container px-4 md:px-6">
             <div className="flex items-center justify-between mb-12 animate-in slide-in-from-top duration-500">
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                 {searchQuery ? "Search Results" : "Featured Books"}
               </h2>
               {!searchQuery && (
                 <Link
                   href="#"
-                  className="text-orange-500 hover:text-orange-600 flex items-center group transition-colors duration-300"
+                  className="text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 flex items-center group transition-colors duration-300"
                 >
                   View all
                   <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
@@ -523,7 +529,7 @@ export default function Home() {
                       style={{ animationDelay: `${index * 100}ms` }}
                       onClick={() => handleBookClick(book)}
                     >
-                      <div className="aspect-[2/3] overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 shadow-md group-hover:shadow-xl transition-all duration-500">
+                      <div className="aspect-[2/3] overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 shadow-md group-hover:shadow-xl transition-all duration-500">
                         {book.cover ? (
                           <Image
                             src={book.cover || "/placeholder.svg"}
@@ -537,7 +543,7 @@ export default function Home() {
                           />
                         ) : (
                           <div
-                            className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500 text-xl font-bold"
+                            className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-xl font-bold"
                             style={{
                               backgroundImage: `url(${getPlaceholder(
                                 book.title
@@ -550,24 +556,24 @@ export default function Home() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300"></div>
                       </div>
                       <div className="mt-4 space-y-2">
-                        <h3 className="font-semibold text-sm sm:text-base text-gray-900 group-hover:text-orange-800 transition-colors duration-300 line-clamp-2">
+                        <h3 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-gray-100 group-hover:text-orange-800 dark:group-hover:text-orange-400 transition-colors duration-300 line-clamp-2">
                           {book.title}
                         </h3>
-                        <p className="text-gray-500 text-xs sm:text-sm group-hover:text-orange-800 line-clamp-1">
+                        <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm group-hover:text-orange-800 dark:group-hover:text-orange-400 line-clamp-1">
                           {book.authors}
                         </p>
 
                         {/* Book Details Section */}
                         {typeof book.pageCount === "number" &&
                           book.pageCount > 0 && (
-                            <div className="flex items-center text-xs text-gray-600">
+                            <div className="flex items-center text-xs text-gray-600 dark:text-gray-400">
                               <Clock className="h-3 w-3 mr-1 text-orange-500" />
                               <span>{book.pageCount} pages</span>
                             </div>
                           )}
 
                         {typeof book.rating === "number" && book.rating > 0 && (
-                          <div className="flex items-center text-xs text-gray-600">
+                          <div className="flex items-center text-xs text-gray-600 dark:text-gray-400">
                             <Star className="h-3 w-3 mr-1 fill-orange-400 text-orange-400" />
                             <span>
                               {book.rating}{" "}
@@ -587,7 +593,7 @@ export default function Home() {
                                 <Badge
                                   key={idx}
                                   variant="outline"
-                                  className="text-xs bg-orange-50 text-orange-700 border-orange-200 hover:bg-orange-100"
+                                  className="text-xs bg-orange-50 dark:bg-orange-950 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800 hover:bg-orange-100 dark:hover:bg-orange-900"
                                 >
                                   <BookText className="h-3 w-3 mr-1" />
                                   {category}
@@ -596,7 +602,7 @@ export default function Home() {
                             {book.categories.length > 2 && (
                               <Badge
                                 variant="outline"
-                                className="text-xs bg-gray-50 text-gray-700 border-gray-200"
+                                className="text-xs bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700"
                               >
                                 +{book.categories.length - 2}
                               </Badge>
@@ -627,7 +633,7 @@ export default function Home() {
                             className={`w-10 h-10 p-0 ${
                               currentPage === page
                                 ? "bg-orange-500 hover:bg-orange-600"
-                                : "text-orange-600 border-orange-200"
+                                : "text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800"
                             }`}
                           >
                             {page}
@@ -706,7 +712,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 pl-5 lg:pl-30">
+      <footer className="bg-gray-900 dark:bg-gray-950 text-white py-16 pl-5 lg:pl-30 border-t border-gray-800">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
