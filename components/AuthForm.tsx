@@ -119,9 +119,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
       `}</style>
 
       {/* Main container with full viewport background */}
-      <div className="fixed inset-0 w-full h-full bg-gradient-to-br from-orange-50 via-white to-orange-100">
+      <div className="fixed inset-0 w-full h-full bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
         {/* Background pattern overlay */}
-        <div className="absolute inset-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50"></div>
+        <div className="absolute inset-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50 dark:opacity-20"></div>
       </div>
 
       {/* Content container */}
@@ -132,7 +132,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl blur-xl transform -rotate-3"></div>
 
             {/* Card content */}
-            <div className="relative bg-white rounded-xl shadow-xl overflow-hidden border border-orange-100">
+            <div className="relative bg-white dark:bg-gray-900 rounded-xl shadow-xl overflow-hidden border border-orange-100 dark:border-gray-800">
               <div className="py-10 px-8">
                 {/* Logo */}
                 <div className="flex items-center justify-center group mb-6">
@@ -144,11 +144,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-center text-gray-800 mb-2">
+                <h3 className="text-xl font-bold text-center text-gray-800 dark:text-gray-100 mb-2">
                   {isSignIn ? "Welcome Back" : "Create Your Account"}
                 </h3>
 
-                <p className="text-center text-gray-600 mb-6">
+                <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
                   {isSignIn
                     ? "Sign in to access your favorite books"
                     : "Join BookVerse to discover amazing stories"}
@@ -158,7 +158,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="w-full space-y-5 text-black"
+                    className="w-full space-y-5 text-black dark:text-white"
                   >
                     {!isSignIn && (
                       <CustomFormField
@@ -231,13 +231,13 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 </div>  */}
 
                 {/* Sign in/up toggle */}
-                <p className="text-center text-gray-600">
+                <p className="text-center text-gray-600 dark:text-gray-400">
                   {isSignIn
                     ? "Don't have an account yet?"
                     : "Already have an account?"}
                   <Link
                     href={!isSignIn ? "/sign-in" : "/sign-up"}
-                    className="ml-1 font-medium text-orange-600 hover:text-orange-500 transition-colors duration-300"
+                    className="ml-1 font-medium text-orange-600 dark:text-orange-400 hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-300"
                   >
                     {!isSignIn ? "Sign In" : "Sign Up"}
                   </Link>

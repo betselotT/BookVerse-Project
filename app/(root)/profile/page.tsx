@@ -10,6 +10,7 @@ import SignOutButton from "@/components/sign-out-button";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getUserBooks } from "@/lib/firebase/books";
 import { toast } from "sonner";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // User interface
 interface UserProfile {
@@ -128,10 +129,10 @@ const ProfilePage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading profile...</p>
+          <p className="text-gray-600 dark:text-gray-400">Loading profile...</p>
         </div>
       </div>
     );
@@ -139,9 +140,9 @@ const ProfilePage: React.FC = () => {
 
   if (!profile) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600">Profile not found</p>
+          <p className="text-gray-600 dark:text-gray-400">Profile not found</p>
           <Button onClick={() => router.push("/sign-in")} className="mt-4">
             Sign In
           </Button>
@@ -151,11 +152,11 @@ const ProfilePage: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 text-orange-900">
+    <div className="relative min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-orange-900 dark:text-orange-100">
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50 pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f97316%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50 dark:opacity-20 pointer-events-none z-0"></div>
 
-      <header className="sticky top-0 z-20 w-full border-b bg-white/95 backdrop-blur-md shadow-sm animate-in slide-in-from-top duration-300 pr-10">
+      <header className="sticky top-0 z-20 w-full border-b border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm animate-in slide-in-from-top duration-300 pr-10">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <div
@@ -175,19 +176,19 @@ const ProfilePage: React.FC = () => {
           <nav className="hidden md:flex items-center gap-8">
             <button
               onClick={() => router.push("/")}
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group"
             >
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
               onClick={() => router.push("/books")}
-              className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group"
             >
               My Books
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </button>
-            <button className="text-sm font-medium text-orange-600 relative group cursor-default">
+            <button className="text-sm font-medium text-orange-600 dark:text-orange-400 relative group cursor-default">
               Profile
               <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500 transition-all duration-300"></span>
             </button>
@@ -196,16 +197,17 @@ const ProfilePage: React.FC = () => {
           {/* User menu */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-8">
+              <ThemeToggle />
               <button
                 onClick={() => {
                   router.push("/profile");
                   console.log("Profile clicked");
                 }}
-                className="flex items-center gap-2 text-sm text-gray-700 hover:text-black transition cursor-pointer"
+                className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition cursor-pointer"
               >
-                <User className="h-9 w-9 text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105 relative group" />
+                <User className="h-9 w-9 text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105 relative group" />
               </button>
-              <div className="text-gray-700 hover:text-orange-500 transition-all duration-300 hover:scale-105">
+              <div className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-all duration-300 hover:scale-105">
                 <SignOutButton />
               </div>
             </div>
@@ -215,14 +217,14 @@ const ProfilePage: React.FC = () => {
 
       {/* Profile Main Content */}
       <main className="relative z-10 flex flex-col items-center py-12 px-4 md:px-0 max-w-2xl mx-auto">
-        <div className="w-32 h-32 rounded-full border-4 border-orange-200 overflow-hidden shadow-lg mb-4">
+        <div className="w-32 h-32 rounded-full border-4 border-orange-200 dark:border-orange-800 overflow-hidden shadow-lg mb-4">
           <img
             src="/placeholder.svg?height=128&width=128"
             alt={profile.name}
             className="object-cover w-full h-full"
           />
         </div>
-        <h2 className="text-3xl font-bold mb-2">{profile.name}</h2>
+        <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">{profile.name}</h2>
 
         {/* Bio Section */}
         <div className="w-full max-w-md mb-4">
@@ -231,7 +233,7 @@ const ProfilePage: React.FC = () => {
               <Textarea
                 value={editedBio}
                 onChange={(e) => setEditedBio(e.target.value)}
-                className="w-full text-center border-orange-200 focus:border-orange-400 resize-none"
+                className="w-full text-center border-orange-200 dark:border-orange-800 focus:border-orange-400 dark:focus:border-orange-500 resize-none bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                 rows={3}
                 placeholder="Tell us about yourself..."
               />
@@ -248,7 +250,7 @@ const ProfilePage: React.FC = () => {
                   onClick={handleCancelEdit}
                   size="sm"
                   variant="outline"
-                  className="border-orange-200"
+                  className="border-orange-200 dark:border-orange-800"
                 >
                   <X className="h-4 w-4 mr-1" />
                   Cancel
@@ -257,12 +259,12 @@ const ProfilePage: React.FC = () => {
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-orange-700 text-lg mb-2">{profile.bio}</p>
+              <p className="text-orange-700 dark:text-orange-300 text-lg mb-2">{profile.bio}</p>
               <Button
                 onClick={handleEditBio}
                 size="sm"
                 variant="ghost"
-                className="text-orange-600 hover:text-orange-700 hover:bg-orange-50"
+                className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950"
               >
                 <Edit className="h-4 w-4 mr-1" />
                 Edit Bio
@@ -272,30 +274,30 @@ const ProfilePage: React.FC = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="flex flex-wrap justify-center gap-6 bg-white/90 border border-orange-100 rounded-lg px-8 py-4 shadow mt-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-6 bg-white/90 dark:bg-gray-900/90 border border-orange-100 dark:border-gray-800 rounded-lg px-8 py-4 shadow mt-2 mb-8">
           <div className="flex flex-col items-center">
-            <span className="text-2xl font-bold text-orange-600">
+            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {stats.booksRead}
             </span>
-            <span className="text-sm text-gray-500">Books Read</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Books Read</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-2xl font-bold text-orange-600">
+            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {stats.currentlyReading}
             </span>
-            <span className="text-sm text-gray-500">Currently Reading</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Currently Reading</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-2xl font-bold text-orange-600">
+            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {stats.wantToRead}
             </span>
-            <span className="text-sm text-gray-500">Want to Read</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Want to Read</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-2xl font-bold text-orange-600">
+            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {stats.memberSince}
             </span>
-            <span className="text-sm text-gray-500">Member Since</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Member Since</span>
           </div>
         </div>
       </main>
