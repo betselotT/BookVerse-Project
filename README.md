@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="/public/logo.jpg" alt="BookVerse Logo" width="120"/>
+  
+  <h1>BookVerse 📚✨</h1>
+  
+  <h3>Your Universe of Stories</h3>
+  
+  <p>
+    Discover thousands of books • Track your reading journey • All open-source
+  </p>
+</div>
 
-## Getting Started
 
-First, run the development server:
+## ✨ Features
+
+- 🔍 Search by title or author  
+- 📚 Beautifully curated featured books section  
+- 📖 Personal bookshelf with reading status tracking  
+- 📊 Visual progress bars for books you're currently reading  
+- 👤 Secure user accounts & authentication  
+- 🎨 Modern, responsive design with smooth animations  
+- 🌐 Powered by Google Books API & Open Library API  
+- 🔓 100% open-source under MIT license
+
+
+## 📸 Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="/public/one.jpg" width="380" alt="Homepage"/></td>
+      <td><img src="/public/two.jpg" width="380" alt="Featured Books"/></td>
+    </tr>
+    <tr>
+      <td><img src="/public/three.jpg" width="380" alt="My Books Dashboard"/></td>
+      <td><img src="/public/four.jpg" width="380" alt="Sign Up"/></td>
+    </tr>
+  </table>
+</div>
+
+
+## 🛠 Tech Stack
+
+- **Frontend** → Next.js 15 (App Router)  
+- **Styling** → Tailwind CSS  
+- **Backend & Auth** → Firebase (Firestore + Authentication)  
+- **Animations** → Framer Motion  
+- **Book Data** → Google Books API + Open Library API  
+- **Deployment** → Vercel (recommended), Netlify, Firebase Hosting
+
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18 or higher  
+- npm / yarn / pnpm  
+- A Firebase project (Firestore & Authentication enabled)
+
+### Installation & Run
 
 ```bash
+# 1. Clone the project
+git clone https://github.com/betselotT/BookVerse-Project.git
+cd BookVerse
+
+# 2. Install dependencies
+npm install
+# or yarn install
+# or pnpm install
+
+# 3. Create .env.local file with your Firebase config:
+# NEXT_PUBLIC_FIREBASE_API_KEY=xxxxxxxxxx
+# NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+# NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+# NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+# NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=xxxxxxxxxxxx
+# NEXT_PUBLIC_FIREBASE_APP_ID=1:xxxxxxxxxxxx:web:xxxxxxxxxxxxxxxxxxxxxx
+
+# 4. Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# or yarn dev
+# or pnpm dev
+Open http://localhost:3000 in your browser
+🤝 Contributing
+We welcome all kinds of contributions — bug fixes, new features, documentation improvements, design suggestions, or even just reporting issues!
+How to contribute
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fork the repository
+Create your feature branchBashgit checkout -b feature/amazing-feature
+Commit your changesBashgit commit -m 'Add some amazing feature'
+Push to the branchBashgit push origin feature/amazing-feature
+Open a Pull Request
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contribution Guidelines (Summary)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use clear, descriptive commit messages
+Keep code style consistent with existing files
+Add/update tests when relevant
+Update documentation when you change functionality
+Be kind and respectful in all interactions
 
-## Learn More
+Thank you for helping make BookVerse better! ❤️
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+MIT License
+Copyright (c) 2025 [Your Name / Your Team]
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+💙 Special Thanks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Google Books API
+Open Library API
+Next.js
+Tailwind CSS
+Firebase
+Framer Motion
+
+
+Happy Reading! 📖
