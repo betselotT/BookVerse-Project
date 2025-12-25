@@ -45,8 +45,8 @@
 - **Styling** → Tailwind CSS  
 - **Backend & Auth** → Firebase (Firestore + Authentication)  
 - **Animations** → Framer Motion  
-- **Book Data** → Google Books API + Open Library API  
-- **Deployment** → Vercel (recommended), Netlify, Firebase Hosting
+- **Book Data** → Google Books API  
+- **Deployment** → Vercel 
 
 
 ## 🚀 Quick Start
