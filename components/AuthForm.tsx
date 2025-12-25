@@ -54,7 +54,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           email,
           password
         );
-//checking
+
         const result = await signUp({
           uid: userCredential.user.uid,
           name: name!,
