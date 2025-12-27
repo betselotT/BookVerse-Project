@@ -6,6 +6,13 @@ import { redirect } from "next/navigation";
 // import { isAuthenticated } from "@/lib/actions/auth.action";
 import SignOutButton from "@/components/sign-out-button";
 
+/**
+ * Contribution by: Diana
+ * Added enhancements to book display and search
+ * Date: 27-12-2025
+ */
+
+
 const Layout = async ({ children }: { children: ReactNode }) => {
   // const isUserAuthenticated = await isAuthenticated();
   // if (!isUserAuthenticated) redirect("/sign-in");
