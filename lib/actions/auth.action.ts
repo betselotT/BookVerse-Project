@@ -4,10 +4,10 @@ import { auth, db } from "@/firebase/admin";
 import { cookies } from "next/headers";
 import { serverEnv } from "../env.server";
 
-// Session duration (1 week)
+// Session duration (1 week),
 const SESSION_DURATION = 60 * 60 * 24 * 7;
 
-// User interface
+// User interface,
 interface User {
   id: string;
   name: string;
@@ -60,7 +60,7 @@ export async function signUp(params: SignUpParams) {
         message: "User already exists. Please sign in.",
       };
 
-    // save user to db
+    // save user to db,git status
     await db.collection("users").doc(uid).set({
       name,
       email,
