@@ -129,7 +129,7 @@ export const updateBookProgress = async (bookId: string, progress: number) => {
     } else if (progress > 0) {
       updateData.status = "reading"
     }
-
+// ⚠️ Important: This ensures the book's reading status reflects actual progress
     await updateDoc(bookRef, updateData)
     return { success: true }
   } catch (error) {
