@@ -1,7 +1,7 @@
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
-import { env } from "@/lib/env";
+import { serverEnv } from "@/lib/env.server";
 // Initialize Firebase Admin SDK
 function initFirebaseAdmin() {
   const apps = getApps();
@@ -9,10 +9,10 @@ function initFirebaseAdmin() {
   if (!apps.length) {
     initializeApp({
       credential: cert({
-        projectId: env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-        clientEmail: env.FIREBASE_CLIENT_EMAIL,
+        projectId: serverEnv.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+        clientEmail: serverEnv.FIREBASE_CLIENT_EMAIL,
         // Replace newlines in the private key
-        privateKey: env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        privateKey: serverEnv.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
       }),
     });
   }

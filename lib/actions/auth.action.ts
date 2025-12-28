@@ -2,7 +2,7 @@
 
 import { auth, db } from "@/firebase/admin";
 import { cookies } from "next/headers";
-import { env } from "../env";
+import { serverEnv } from "../env.server";
 
 // Session duration (1 week)
 const SESSION_DURATION = 60 * 60 * 24 * 7;
@@ -42,7 +42,7 @@ export async function setSessionCookie(idToken: string) {
   cookieStore.set("session", sessionCookie, {
     maxAge: SESSION_DURATION,
     httpOnly: true,
-    secure: env.NODE_ENV === "production",
+    secure: serverEnv.NODE_ENV === "production",
     path: "/",
     sameSite: "lax",
   });
