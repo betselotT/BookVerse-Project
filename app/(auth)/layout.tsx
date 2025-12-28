@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
-
+// Redirect authenticated users away from auth pages (login/register)
 import { isAuthenticated } from "@/lib/actions/auth.action";
 
 const AuthLayout = async ({ children }: { children: ReactNode }) => {
